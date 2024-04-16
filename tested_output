@@ -1,0 +1,153 @@
+##### Output after terraform apply#####
+
+aws_vpc.main: Refreshing state... [id=vpc-0bdb20c22202f618c]
+aws_subnet.public_subnet: Refreshing state... [id=subnet-0b6e30222fa0e47e6]
+aws_subnet.private_subnet: Refreshing state... [id=subnet-01a799762c2355483]
+aws_internet_gateway.ig: Refreshing state... [id=igw-08fa7d609576584b5]
+aws_route_table.public: Refreshing state... [id=rtb-098af4ba265367b45]
+aws_route_table.private: Refreshing state... [id=rtb-072ff95a8fb56b6aa]
+aws_security_group.default: Refreshing state... [id=sg-06820bf092bb89e23]
+aws_eip.nat_eip: Refreshing state... [id=eipalloc-0f5ac8909f64243df]
+aws_route.public_internet_gateway: Refreshing state... [id=r-rtb-098af4ba265367b451080289494]
+aws_route_table_association.public: Refreshing state... [id=rtbassoc-03ecf44c760fc2275]
+aws_route_table_association.private: Refreshing state... [id=rtbassoc-0e593d3ba1c55c2fd]
+aws_nat_gateway.nat: Refreshing state... [id=nat-08a96ec64d9e392b5]
+aws_route.private_nat_gateway: Refreshing state... [id=r-rtb-072ff95a8fb56b6aa1080289494]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_eip.nat_eip will be updated in-place
+  ~ resource "aws_eip" "nat_eip" {
+        id                       = "eipalloc-0f5ac8909f64243df"
+      ~ tags                     = {
+          + "Attributes" = "main"
+          + "Name"       = "ll-vpc-main"
+          + "Namespace"  = "ll"
+        }
+      ~ tags_all                 = {
+          + "Attributes" = "main"
+          + "Name"       = "ll-vpc-main"
+          + "Namespace"  = "ll"
+        }
+        # (15 unchanged attributes hidden)
+    }
+
+  # aws_internet_gateway.ig will be updated in-place
+  ~ resource "aws_internet_gateway" "ig" {
+        id       = "igw-08fa7d609576584b5"
+      ~ tags     = {
+          ~ "Name" = "igw" -> "module.label_vpc.tags"
+        }
+      ~ tags_all = {
+          ~ "Name" = "igw" -> "module.label_vpc.tags"
+        }
+        # (3 unchanged attributes hidden)
+    }
+
+  # aws_nat_gateway.nat will be updated in-place
+  ~ resource "aws_nat_gateway" "nat" {
+        id                                 = "nat-08a96ec64d9e392b5"
+      ~ tags                               = {
+          ~ "Name" = "nat" -> "module.label_vpc.tags"
+        }
+      ~ tags_all                           = {
+          ~ "Name" = "nat" -> "module.label_vpc.tags"
+        }
+        # (10 unchanged attributes hidden)
+    }
+
+  # aws_route_table.private will be updated in-place
+  ~ resource "aws_route_table" "private" {
+        id               = "rtb-072ff95a8fb56b6aa"
+      ~ tags             = {
+          ~ "Name" = "private-route-table" -> "module.label_vpc.tags"
+        }
+      ~ tags_all         = {
+          ~ "Name" = "private-route-table" -> "module.label_vpc.tags"
+        }
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_route_table.public will be updated in-place
+  ~ resource "aws_route_table" "public" {
+        id               = "rtb-098af4ba265367b45"
+      ~ tags             = {
+          ~ "Name" = "public-route-table" -> "module.label_vpc.tags"
+        }
+      ~ tags_all         = {
+          ~ "Name" = "public-route-table" -> "module.label_vpc.tags"
+        }
+        # (5 unchanged attributes hidden)
+    }
+
+  # aws_subnet.private_subnet will be updated in-place
+  ~ resource "aws_subnet" "private_subnet" {
+        id                                             = "subnet-01a799762c2355483"
+      ~ tags                                           = {
+          ~ "Name" = "private-subnet" -> "module.label_vpc.tags"
+        }
+      ~ tags_all                                       = {
+          ~ "Name" = "private-subnet" -> "module.label_vpc.tags"
+        }
+        # (19 unchanged attributes hidden)
+    }
+
+  # aws_subnet.public_subnet will be updated in-place
+  ~ resource "aws_subnet" "public_subnet" {
+        id                                             = "subnet-0b6e30222fa0e47e6"
+      ~ tags                                           = {
+          ~ "Name" = "public-subnet" -> "module.label_vpc.tags"
+        }
+      ~ tags_all                                       = {
+          ~ "Name" = "public-subnet" -> "module.label_vpc.tags"
+        }
+        # (19 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 7 to change, 0 to destroy.
+╷
+│ Warning: Argument is deprecated
+│ 
+│   with aws_eip.nat_eip,
+│   on vpc.tf line 41, in resource "aws_eip" "nat_eip":
+│   41:   vpc        = true
+│ 
+│ use domain attribute instead
+│ 
+│ (and one more similar warning elsewhere)
+╵
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+aws_internet_gateway.ig: Modifying... [id=igw-08fa7d609576584b5]
+aws_subnet.public_subnet: Modifying... [id=subnet-0b6e30222fa0e47e6]
+aws_route_table.public: Modifying... [id=rtb-098af4ba265367b45]
+aws_route_table.private: Modifying... [id=rtb-072ff95a8fb56b6aa]
+aws_subnet.private_subnet: Modifying... [id=subnet-01a799762c2355483]
+aws_internet_gateway.ig: Modifications complete after 0s [id=igw-08fa7d609576584b5]
+aws_route_table.private: Modifications complete after 0s [id=rtb-072ff95a8fb56b6aa]
+aws_eip.nat_eip: Modifying... [id=eipalloc-0f5ac8909f64243df]
+aws_route_table.public: Modifications complete after 0s [id=rtb-098af4ba265367b45]
+aws_subnet.public_subnet: Modifications complete after 0s [id=subnet-0b6e30222fa0e47e6]
+aws_subnet.private_subnet: Modifications complete after 0s [id=subnet-01a799762c2355483]
+aws_eip.nat_eip: Modifications complete after 1s [id=eipalloc-0f5ac8909f64243df]
+aws_nat_gateway.nat: Modifying... [id=nat-08a96ec64d9e392b5]
+aws_nat_gateway.nat: Modifications complete after 0s [id=nat-08a96ec64d9e392b5]
+╷
+│ Warning: Argument is deprecated
+│ 
+│   with aws_eip.nat_eip,
+│   on vpc.tf line 41, in resource "aws_eip" "nat_eip":
+│   41:   vpc        = true
+│ 
+│ use domain attribute instead
+╵
+
+Apply complete! Resources: 0 added, 7 changed, 0 destroyed.
